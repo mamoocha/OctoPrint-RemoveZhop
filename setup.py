@@ -25,4 +25,5 @@ setup(
     entry_points={
         "octoprint.plugin": ["%s = %s" % (plugin_identifier, plugin_package)]
     },
+    python_requires='>=2.7,<4'
 )
