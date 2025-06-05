@@ -1,18 +1,18 @@
 from setuptools import setup
 
-plugin_identifier = "remove_z_hop"
-plugin_package = "remove_z_hop"
-plugin_name = "Remove Z-Hop"
-plugin_version = "1.0.0"
-plugin_description = "Removes small Z-hop movements from G-code live during printing."
-plugin_author = "Mamoocha"
+plugin_identifier = "removezhop"
+plugin_package = "octoprint_removezhop"
+plugin_name = "OctoPrint-RemoveZHop"
+plugin_version = "1.0.1"
+plugin_description = "Removes small Z-hop moves from G-code during printing"
+plugin_author = "mamoocha"
 plugin_author_email = "mamoocha@duck.com"
-plugin_url = "https://github.com/mamoocha/OctoPrint-RemoveZHop"
+plugin_url = "https://github.com/mamoocha/OctoPrint-RemoveZhop"
 plugin_license = "AGPLv3"
 plugin_requires = []
 
 setup(
-    name=f"OctoPrint-{plugin_identifier}",
+    name=plugin_name,
     version=plugin_version,
     description=plugin_description,
     author=plugin_author,
@@ -23,6 +23,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     entry_points={
-        "octoprint.plugin": [f"{plugin_identifier} = {plugin_package}.remove_z_hop:RemoveZHopPlugin"]
+        "octoprint.plugin": ["%s = %s" % (plugin_identifier, plugin_package)]
     },
 )
