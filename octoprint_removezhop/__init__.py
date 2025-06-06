@@ -34,7 +34,7 @@ class RemoveZHopPlugin(octoprint.plugin.SettingsPlugin,
         return cmd
 
     def get_template_configs(self):
-        return [dict(type="sidebar", name="Remove Z-Hop", template="sidebar_removezhop.jinja2", custom_bindings=True)]
+        return [dict(type="sidebar", name="Remove Z-Hop", template="removezhop_sidebar.jinja2", custom_bindings=True)]
 
     def get_assets(self):
         return {
