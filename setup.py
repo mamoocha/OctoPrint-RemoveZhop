@@ -23,7 +23,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     entry_points={
-        "octoprint.plugin": ["%s = %s" % (plugin_identifier, plugin_package)]
+        "octoprint.plugin": ["removezhop = octoprint_removezhop:RemoveZHopPlugin"]
     },
     python_requires='>=2.7,<4'
 )
