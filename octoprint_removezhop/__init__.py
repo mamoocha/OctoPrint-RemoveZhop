@@ -38,8 +38,8 @@ class RemoveZHopPlugin(octoprint.plugin.SettingsPlugin,
 
     def get_assets(self):
         return {
-            "js": ["js/removezhop.js"],
-            "css": ["css/removezhop.css"]
+            "js": ["static/js/removezhop.js"],
+            "css": ["static/css/removezhop.css"]
         }
 
     def on_after_startup(self):
