@@ -8,8 +8,8 @@ class RemoveZHopPlugin(octoprint.plugin.SettingsPlugin,
 
     def get_settings_defaults(self):
         return {
-            "enabled": True,
-            "z_threshold": 0.4
+            "enabled": False,
+            "z_threshold": 0.0
         }
 
     def gcode_queuing_hook(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
