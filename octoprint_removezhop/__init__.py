@@ -2,9 +2,9 @@ import octoprint.plugin
 import re
 
 class RemoveZHopPlugin(octoprint.plugin.SettingsPlugin,
-                        octoprint.plugin.TemplatePlugin,
-                        octoprint.plugin.AssetPlugin,
-                        octoprint.plugin.StartupPlugin):
+                      octoprint.plugin.TemplatePlugin,
+                      octoprint.plugin.AssetPlugin,
+                      octoprint.plugin.StartupPlugin):
 
     def get_settings_defaults(self):
         return {
@@ -23,10 +23,13 @@ class RemoveZHopPlugin(octoprint.plugin.SettingsPlugin,
                     z_val = float(match.group(1))
                     threshold = self._settings.get_float(["z_threshold"])
                     if 0 < z_val <= threshold:
-                        self._logger.info(f"[RemoveZHop] Suppressed Z-hop move: {cmd}")
-                        return None
+                        self._logger.info(f"[RemoveZHop] Suppressed Z-hop move (commented): {cmd}")
+
+                        # Instead of removing the command, we comment it out
+                        # so the firmware does not receive it but the log records it
+                        return f"; Suppressed Z-hop: {cmd}\n"
                 except ValueError:
-                    pass
+                    self._logger.warning(f"[RemoveZHop] Couldn't parse Z value from command: {cmd}")
 
         return cmd
 
@@ -45,9 +48,6 @@ class RemoveZHopPlugin(octoprint.plugin.SettingsPlugin,
             self._settings.get_float(["z_threshold"])
         ))
 
-__plugin_name__ = "Remove Z-Hop"
-__plugin_version__ = "1.0.1"
-__plugin_description__ = "Removes small Z-hop movements from G-code live during printing."
 __plugin_implementation__ = RemoveZHopPlugin()
 
 __plugin_hooks__ = {
