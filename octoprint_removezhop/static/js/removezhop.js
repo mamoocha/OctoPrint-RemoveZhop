@@ -24,6 +24,6 @@ $(function() {
     OCTOPRINT_VIEWMODELS.push({
         construct: RemoveZHopViewModel,
         dependencies: ["settingsViewModel"],
-        elements: ["sidebar_plugin_removezhop"]
+        elements: ["#sidebar_plugin_removezhop"]
     });
 });
